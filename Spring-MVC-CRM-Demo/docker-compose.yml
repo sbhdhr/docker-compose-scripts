@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  tomcat:
+    build:
+      context: .
+      dockerfile: tomcat.Dockerfile
+    ports:
+      - '8080:8080'
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql.Dockerfile
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+
+
