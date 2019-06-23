@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   tomcat:
@@ -7,14 +7,16 @@ services:
       dockerfile: tomcat.Dockerfile
     ports:
       - '8080:8080'
+    depends_on: 
+      - mysql
   mysql:
     build:
       context: .
       dockerfile: mysql.Dockerfile
+    environment: 
+      MYSQL_ROOT_PASSWORD: sbhdhr
     volumes:
       - mysql-data:/var/lib/mysql
 
 volumes:
   mysql-data:
-
-
